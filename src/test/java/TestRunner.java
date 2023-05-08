@@ -8,5 +8,4 @@ import org.junit.runner.RunWith;
         glue = "Steps"
 )
 public class TestRunner {
-
 }
