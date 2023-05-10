@@ -1,4 +1,5 @@
 package Steps;
+
 import PageObject.*;
 import com.codeborne.selenide.Configuration;
 import com.codeborne.selenide.Selenide;
@@ -10,17 +11,18 @@ import io.cucumber.java.en.When;
 public class Steps {
 
     final String browser = "chrome";
+    final String url = "https://www.yakaboo.ua/";
 
     @Given("configure browser")
     public void confChrome() {
-        Selenide.sleep(1500);
         Configuration.browser = browser;
         Configuration.browserSize = "1920x1080";
+        Configuration.timeout = 10000;
     }
 
     @And("the user is on the site Yakaboo")
     public void openYakabooWebSite() {
-        Selenide.open("https://www.yakaboo.ua/");
+        Selenide.open(url);
     }
 
     @When("user click on book category in home side bar")
@@ -37,34 +39,29 @@ public class Steps {
 
     @And("user click on random book in book list")
     public void clickOnRandomBook() {
-        Selenide.sleep(1500);
         CategoryMainPage bookList = new CategoryMainPage();
         bookList.clickRandomBook();
     }
 
     @And("user click on button add to cart")
     public void clickButtonAddToCart() {
-        Selenide.sleep(2000);
         ProductContainerPage cartBtn = new ProductContainerPage();
         cartBtn.clickAddToCartBtn();
     }
 
     @And("user clicks back in the browser")
     public void moveBackInBrowser() {
-        Selenide.sleep(1000);
         Selenide.back();
     }
 
     @And("user click on button buy now")
     public void clickBuyNowBtn() {
-        Selenide.sleep(2000);
         ProductContainerPage buyNowBtn = new ProductContainerPage();
         buyNowBtn.clickBuyNowBtn();
     }
 
     @And("user enter personal details in checkout block")
     public void enterPersonalInfo() {
-        Selenide.sleep(1000);
         CheckoutPage personalInfo = new CheckoutPage();
         personalInfo.enterPersonalDetailsInCheckoutBlock();
 
@@ -72,7 +69,6 @@ public class Steps {
 
     @And("user chose country,citi and method in delivery method")
     public void choseCountryCityDeliveryMethod() {
-        Selenide.sleep(2000);
         CheckoutPage countryCityDelivery = new CheckoutPage();
         countryCityDelivery.choseCountryCityPayMethod();
     }
@@ -97,7 +93,6 @@ public class Steps {
 
     @And("user click on button delete product in checkout product card")
     public void removeProduct() {
-        Selenide.sleep(2000);
         CheckoutPage removeProduct = new CheckoutPage();
         removeProduct.removeProduct();
     }

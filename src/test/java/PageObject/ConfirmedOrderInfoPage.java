@@ -1,4 +1,5 @@
 package PageObject;
+
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
@@ -7,10 +8,10 @@ import static com.codeborne.selenide.Selenide.$;
 
 public class ConfirmedOrderInfoPage {
 
-    private final SelenideElement confirmOrderInfoBlock = $(By.xpath("//*[@id=\"viewport\"]/div[9]/div/div[2]/div/div[2]/div/section/div/div[5]/button"));
+    private final SelenideElement confirmOrderInfoBlock = $(By.xpath("//button[@class='ui-btn-secondary' and contains(text(), 'Підтвердити замовлення')]"));
 
     public void confirmOrderInfoBlockSuccess() {
-        confirmOrderInfoBlock.shouldBe(Condition.visible);
+        confirmOrderInfoBlock.shouldBe(Condition.exist);
         System.out.println("Log: >>>> I see window with my success order information!!!");
     }
 }

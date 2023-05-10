@@ -1,52 +1,52 @@
 package PageObject;
-import com.codeborne.selenide.Selenide;
+
+import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
+
 
 import static com.codeborne.selenide.Selenide.$;
 
 public class CheckoutPage {
 
-    private final SelenideElement nameFild = $(By.xpath("//*[@id=\"viewport\"]/div[9]/div/div[1]/section[1]/div/div/div[1]/div/div[2]/input"));
-    private final SelenideElement secondNameFild = $(By.xpath("//*[@id=\"viewport\"]/div[9]/div/div[1]/section[1]/div/div/div[2]/div/div[2]/input"));
-    private final SelenideElement phoneNumberFild = $(By.xpath("//*[@id=\"viewport\"]/div[9]/div/div[1]/section[1]/div/div/div[3]/div/div[2]/div[2]/div/div/div/input"));
-    private final SelenideElement emailFild = $(By.xpath("//*[@id=\"viewport\"]/div[9]/div/div[1]/section[1]/div/div/div[4]/div/div[2]/input"));
-    private final SelenideElement cityFild = $(By.xpath("//*[@id=\"viewport\"]/div[9]/div/div[1]/section[2]/div/div[2]/div/div[2]/div[1]/div[1]/div/div/div/input"));
-    private final SelenideElement choseCity = $(By.xpath("//*[@id=\"viewport\"]/div[9]/div/div[1]/section[2]/div[1]/div[2]/div/div[2]/div[2]/div/div[1]/ul/li[1]"));
+    private final SelenideElement nameFild = $(By.xpath("//input[@class='ui-base-input' and @name='first name']"));
+    private final SelenideElement secondNameFild = $(By.xpath("//input[@class='ui-base-input' and @name='last name']\n"));
+    private final SelenideElement phoneNumberFild = $(By.xpath("//input[@class='ui-base-input' and @type='tel']"));
+    private final SelenideElement emailFild = $(By.xpath("//input[@name=\"email\"]\n"));
+    private final SelenideElement cityFild = $(By.xpath("//input[@name=\"base-select-search\" and @placeholder=\"Введіть назву міста...\"]"));
+    private final SelenideElement choseCity = $(By.xpath("//ul[@class=\"item-with-list__options\"]/li[contains(text(), \"Київ\")]"));
     private final SelenideElement deliveryMethod = $(By.xpath("//*[@id=\"khreschatyk\"]"));
-    private final SelenideElement commentFild = $(By.xpath("//*[@id=\"viewport\"]/div[9]/div/div[1]/div[1]/div[2]/div/div/textarea"));
+    private final SelenideElement commentFild = $(By.xpath("//textarea[@placeholder='' and @class='ui-base-textarea']\n"));
     private final SelenideElement editProductBtn = $(By.xpath("//*[@id=\"viewport\"]/div[9]/div/div[2]/div/div[1]/div[1]/div"));
-    private final SelenideElement removeProductBtn = $(By.xpath("/html/body/div[1]/div/div/div[9]/div/div[2]/div/div[1]/div[2]/div[1]/div[1]/div[2]/span"));
+    private final SelenideElement removeProductBtn = $(By.xpath("//span[@class='product-action-remove' and text()='Видалити']"));
 
     public void enterPersonalDetailsInCheckoutBlock() {
-        nameFild.sendKeys("TestNameAlex");
-        secondNameFild.sendKeys("SecondTestNameAlex");
-        phoneNumberFild.sendKeys("0935556677");
-        emailFild.sendKeys("TestAlex@gmail.com");
+        nameFild.shouldBe(Condition.exist).sendKeys("TestNameAlex");
+        secondNameFild.shouldBe(Condition.exist).sendKeys("SecondTestNameAlex");
+        phoneNumberFild.shouldBe(Condition.exist).sendKeys("0935556677");
+        emailFild.shouldBe(Condition.exist).sendKeys("TestAlex@gmail.com");
     }
 
     public void choseCountryCityPayMethod() {
-        cityFild.sendKeys("Київ");
-        Selenide.sleep(500);
-        choseCity.click();
-        Selenide.sleep(1500);
-        deliveryMethod.click();
+        cityFild.shouldBe(Condition.exist).sendKeys("Київ");
+        choseCity.shouldBe(Condition.exist).click();
+        deliveryMethod.shouldBe(Condition.exist).click();
     }
 
     public void chosePayMethod() {
-        System.out.println("Log: >>> Chose Pay Method");
+        System.out.println("Log: >>>> Chose Pay Method");
     }
 
     public void enterComent() {
-        commentFild.sendKeys("TestComment");
+        commentFild.shouldBe(Condition.exist).sendKeys("TestComment");
     }
 
     public void clickProductEditBtn() {
-        editProductBtn.click();
+        editProductBtn.shouldBe(Condition.exist).click();
     }
 
     public void removeProduct() {
-        removeProductBtn.click();
+        removeProductBtn.shouldBe(Condition.exist).click();
     }
 
     public void clickConfirmOrderBtn() {
