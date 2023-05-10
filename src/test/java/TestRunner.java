@@ -8,5 +8,6 @@ import org.junit.runner.RunWith;
         glue = "Steps",
         tags = "@CriticalPath"
 )
+
 public class TestRunner {
 }

@@ -20,5 +20,3 @@ Feature: Yakaboo critical path testing
       And user click on button delete product in checkout product card
       And user click on button confirm the order
     Then  user order was created
-
-
