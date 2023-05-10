@@ -22,4 +22,3 @@ Feature: Yakaboo critical path testing
     Then  user order was created
 
 
-
