@@ -3,10 +3,7 @@ package PageObject;
 import com.codeborne.selenide.Condition;
 import com.codeborne.selenide.SelenideElement;
 import org.openqa.selenium.By;
-
-
 import static com.codeborne.selenide.Selenide.$;
-
 public class CheckoutPage {
 
     private final SelenideElement nameFild = $(By.xpath("//input[@class='ui-base-input' and @name='first name']"));
